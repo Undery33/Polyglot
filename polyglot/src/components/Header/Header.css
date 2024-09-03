@@ -1,0 +1,38 @@
+
+
+.info-link {
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    width: 100%;
+    left: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+a {
+    padding: 60px;
+}
+
+.main-nav{
+    padding: 15px;
+}
+.mainlogo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: -15px;
+}
+
+.site-header .mainlogo {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lang-button {
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
