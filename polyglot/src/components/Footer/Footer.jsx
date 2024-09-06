@@ -8,8 +8,8 @@ const Footer = () => {
                 <span>@ 2024 POLYGLOT, Inc.</span>
                 <p>This project is a one-person project for a lab-scale presentation and can be operated in a real environment depending on the development environment.</p><br/>
                 <div className="footer-links">
-                    <a href="https://github.com/Undery33">Dev GitHub </a>
-                    <a href="#">You Need Help? </a>
+                    <a href="https://github.com/Undery33"><img src="" className="git-img" />Dev GitHub </a>
+                    <a href="#"><img src="" className="help-img" />You Need Help? </a>
                 </div>
             </div>
         </footer>

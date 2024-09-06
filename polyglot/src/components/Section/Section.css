@@ -1,5 +1,6 @@
 :root {
     --section-background-color: #EDF1D6;
+    --btn-margin: 20px;
 }
 
 .first-text {
@@ -48,4 +49,55 @@
 .third-img {
     width: 400px;
     height: auto;
+}
+
+.discord-btn {
+    width: 176px;
+    height: 62px;
+    background-color: #747eec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
+    margin-top: var(--btn-margin);
+    gap: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.discord-img {
+    width: 140px;
+    height: auto;
+}
+
+.exp-btn {
+    display: flex;
+}
+
+.web-btn {
+    background-color: #609966;
+    width: 176px;
+    height: 62px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--btn-margin);
+    gap: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.web-img {
+    padding-left: 6px;
+    width: 40px;
+    height: auto;
+}
+
+.web-text {
+    padding: 0 12px;
+    font-size: 24px;
+    color: #EDF1D6;
 }

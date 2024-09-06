@@ -1,6 +1,7 @@
 .site-header {
+    background-color: var(--section-background-color);
     width: 100%;
-    padding-top: 10px;
+    padding: 16px 0;
     position: fixed; /* 헤더를 고정하여 항상 보이도록 설정 */
     top: 0;
     left: 0;

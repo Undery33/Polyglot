@@ -8,8 +8,16 @@ const Section = () => {
                 <p className="ftext">
                     <h1>실시간 번역, 자연스러운 대화</h1>
                     채팅으로 번역하던 시절은 안녕, <br/>
-                    대화로 실시간 번역을 디스코드에서도 체험해보세요. <br/>
-                    <button className="discord-btn">DISCORD</button>
+                    대화로 실시간 번역을 디스코드에서도 체험해보세요.
+                    <div className="exp-btn">
+                        <button className="discord-btn">
+                            <img src="./images/discord.png" className="discord-img" />
+                        </button>
+                        <button className="web-btn">
+                            <img src="./images/web_ill.png" className="web-img" />
+                            <p className="web-text">WEB</p>
+                        </button>
+                    </div>
                 </p>
                 <br/>
                 <img src="./images/Group_chat_ill.svg" className="first-img"/>
