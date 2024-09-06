@@ -1,38 +1,87 @@
-
-
-.info-link {
+.site-header {
+    width: 100%;
+    padding-top: 10px;
+    position: fixed; /* 헤더를 고정하여 항상 보이도록 설정 */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* 헤더가 다른 요소 위에 오도록 설정 */
+    overflow: hidden; /* 넘치는 내용을 숨김 */
+  }
+  
+  .main-nav {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 20px; /* 좌우 여백 */
     width: 100%;
-    left: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-a {
-    padding: 60px;
-}
-
-.main-nav{
-    padding: 15px;
-}
-.mainlogo {
-    width: 60px;
-    height: 60px;
-    margin-bottom: -15px;
-}
-
-.site-header .mainlogo {
-    font-weight: bold;
+    overflow: hidden; /* 넘치는 콘텐츠 숨기기 */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* 로고를 왼쪽에 고정 */
+  }
+  
+  .mainlogo {
+    width: 50px;
+    height: auto;
+    padding-left: 92px;
+  }
+  
+  .nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* 메뉴 사이 간격 */
+    flex: 1; /* 중앙 공간을 차지하도록 설정 */
+    overflow: hidden; /* 넘치는 콘텐츠 숨기기 */
+    margin-right: -40px;
+  }
+  
+  .info-link,
+  .nav-right a {
     text-decoration: none;
-}
-
-.lang-button {
-    width: 100px;
-    height: 50px;
+    color: #333;
+    padding: 10px 15px;
+    background-color: transparent;
     border: none;
-    background-color: white;
-    border-radius: 5px;
     cursor: pointer;
-}
+    font-weight: bold; /* 메뉴 항목 강조 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  }
+  
+  .nav-right {
+    margin-left: -60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden; /* 넘치는 콘텐츠 숨기기 */
+  }
+  
+  .lang-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .langicon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-center,
+    .nav-right {
+      display: none; /* 작은 화면에서는 메뉴 숨기기 */
+    }
+  }
+  

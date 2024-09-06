@@ -1,3 +1,6 @@
+:root {
+    --section-background-color: #EDF1D6;
+}
 .discord img {
     width: 50px;
     height: 50px;
@@ -20,3 +23,19 @@
     font-size: 20px;
 }
 
+.first-text {
+    padding: 160px 0 120px 0;
+    background-color: var(--section-background-color);
+}
+
+.second-text {
+    margin-top: -24px;
+    padding: 160px 0 200px 0;
+    background-color: #9DC08B;
+}
+
+.third-text {
+    margin-top: -24px;
+    padding: 160px 0 200px 0;
+    background-color: #609966;
+}
