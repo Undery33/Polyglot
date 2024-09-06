@@ -3,7 +3,16 @@
     --btn-margin: 20px;
 }
 
+.first-text,
+.second-text,
+.third-text {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+}
+
 .first-text {
+    white-space: nowrap;
+    color: #40513B;
     padding: 160px 0 120px 0;
     background-color: var(--section-background-color);
     align-items: center;
@@ -12,12 +21,17 @@
     gap: 40px;
 }
 
+.ftext-in {
+    font-size: 18px;
+}
+
 .first-text .ftext {
     max-width: 500px;
     flex: 1;
 }
 
 .second-text {
+    color: #40513B;
     margin-top: -24px;
     padding: 160px 0 200px 0;
     background-color: #9DC08B;
@@ -28,6 +42,7 @@
 }
 
 .third-text {
+    color: #2d392a;
     margin-top: -24px;
     padding: 160px 0 160px 0;
     background-color: #609966;
@@ -72,6 +87,7 @@
 }
 
 .exp-btn {
+    margin-left: -10px;
     display: flex;
 }
 
@@ -92,12 +108,29 @@
 
 .web-img {
     padding-left: 6px;
-    width: 40px;
+    width: 36px;
     height: auto;
 }
 
 .web-text {
-    padding: 0 12px;
-    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding: 0 8px;
+    font-size: 30px;
     color: #EDF1D6;
+}
+
+@media (max-width: 1000px) {    
+    .first-text,
+    .second-text,
+    .third-text {
+        font-size: 16px;
+    }
+    
+    .first-text,
+    .second-text,
+    .third-text::before {
+        content: " ";
+    }
 }

@@ -7,10 +7,12 @@ const Section = () => {
             <div className="first-text">
                 <p className="ftext">
                     <h1>실시간 번역, 자연스러운 대화</h1>
-                    채팅으로 번역하던 시절은 안녕, <br/>
-                    대화로 실시간 번역을 디스코드에서도 체험해보세요.
+                    <p className="ftext-in">
+                        채팅으로 번역하던 시절은 안녕, <br/>
+                        POLYGLOT을 이용한 실시간 번역을 디스코드에서도 체험해보세요.
+                    </p>
                     <div className="exp-btn">
-                        <button className="discord-btn">
+                        <button className="discord-btn" onClick={() => window.location.href = "https://discord.com/oauth2/authorize?client_id=1281312944994517054"}>
                             <img src="./images/discord.png" className="discord-img" />
                         </button>
                         <button className="web-btn">
