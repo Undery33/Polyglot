@@ -3,8 +3,44 @@
     font-style: normal;
     padding-top: 50px;
     background-color: #40513B;
+    padding-bottom: 20px;
 }
 
 .footer-content {
     color: #609966;
+}
+
+.git-img {
+    width: 46px;
+    height: auto;
+}
+
+.help-img {
+    width: 50px;
+    height: auto;
+}
+
+.dev-text,
+.help-text {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    gap: 40px;
+}
+
+.footer-links img {
+    margin-right: 12px;
+}
+
+.git-link, .help-link {
+    color: #97bd9b;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
