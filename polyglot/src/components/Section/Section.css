@@ -121,6 +121,10 @@
     color: #EDF1D6;
 }
 
+.ttext {
+    padding-top: 40px;
+}
+
 @media (max-width: 1000px) {    
     .first-text,
     .second-text,

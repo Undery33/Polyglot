@@ -20,6 +20,9 @@ const Footer = () => {
             case '/Issue':
                 setFooterClass('site-footer issue-footer');
                 break;
+            case '/Useweb':
+                setFooterClass('site-footer useweb-footer');
+                break;
             default:
                 setFooterClass('site-footer');
         }

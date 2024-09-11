@@ -18,9 +18,9 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route path='/Main' element={<Main />} />
               <Route path="/Polyglot" element={<PolyGlot />} /> 
-              <Route path="/Howtouse" element={<Howtouse />} />
-              <Route path='./Issue' element={<Issue />} />
-              <Route path='./UseWeb' element={<Useweb />} />
+              <Route path="/How2use" element={<Howtouse />} />
+              <Route path='/Issue' element={<Issue />} />
+              <Route path='/UseWeb' element={<Useweb />} />
             </Routes>
           <Footer />
       </div>

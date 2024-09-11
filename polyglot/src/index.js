@@ -1,15 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';  // React 18 이상에서는 'react-dom/client'를 사용
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './i18n';  // i18n 설정 파일을 불러옴
 
-import {BrowserRouter} from 'react-router-dom'
-
+// React 18의 createRoot 사용
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <App />  {/* <BrowserRouter>로 감싸지 않음 */}
   </React.StrictMode>
 );
 

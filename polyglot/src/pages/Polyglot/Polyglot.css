@@ -1,3 +1,14 @@
 .main-info {
     padding: 100px;
+    background-color: #FFE6E6;
+}
+
+.sec-info {
+    padding: 100px;
+    background-color: #E1AFD1;
+}
+
+.third-info {
+    padding: 100px;
+    background-color: #AD88C6;
 }

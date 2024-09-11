@@ -4,7 +4,18 @@ import './Pathnote.css'
 const Pathnote = () => {
     return (
         <>
-            <h1>이슈 및 패치한 내역을 보여주는 사이트 입니다.</h1>
+            <div className="first-div">
+                <h1>많이 찾는 이슈</h1>
+            </div>
+
+            <div className="path-div">
+                <h1>패치 내역</h1>
+            </div>
+
+            <div className="help-div">
+                <h1>지원이 필요하신가요?</h1>
+
+            </div>
         </>
     )
 }

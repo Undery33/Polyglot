@@ -1,17 +1,19 @@
 import React from "react";
 import "./Section.css";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Section = () => {
     const navigate = useNavigate();
     const usewebHandle = () => {
         navigate('/Useweb');
     };
+    const {t} = useTranslation();
 
     return (
         <>
             <div className="first-text">
-                <p className="ftext">
+                <div className="ftext">
                     <h1>실시간 번역, 자연스러운 대화</h1>
                     <p className="ftext-in">
                         채팅으로 번역하던 시절은 안녕, <br/>
@@ -26,26 +28,26 @@ const Section = () => {
                             <p className="web-text">WEB</p>
                         </button>
                     </div>
-                </p>
+                </div>
                 <br/>
                 <img src="./images/Group_chat_ill.svg" className="first-img"/>
             </div>
 
             <div className="second-text">
                 <img src="./images/Reminders_ill.svg" className="second-img" />
-                <p className="stext">
+                <div className="stext">
                     <h1>TTS로 듣는 깔끔한 음성</h1>
                     어떻게 실시간 번역이 가능하냐고요? <br/>
                     그야 TTS가 대신 답해주거든요! <br/>
-                </p>
+                </div>
             </div>
             
             <div className="third-text">
-                <p className="ttext">
-                    <h1>영어부터 세계 정복까지</h1>
+                <div className="ttext">
+                    <h1>{t('conquerTheWorld')}</h1>
                     세계 제 1 외국어인 영어부터 시작해서 <br/>
                     아시아, 유럽, 아프리카 등 소통 안되는 나라가 없도록 <br/>
-                </p>
+                </div>
                 <img src="./images/world_ill.svg" className="third-img" />
             </div>
             
