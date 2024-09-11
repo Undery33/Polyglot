@@ -1,7 +1,13 @@
 import React from "react";
 import "./Section.css";
+import { useNavigate } from "react-router-dom";
 
 const Section = () => {
+    const navigate = useNavigate();
+    const usewebHandle = () => {
+        navigate('/Useweb');
+    };
+
     return (
         <>
             <div className="first-text">
@@ -15,7 +21,7 @@ const Section = () => {
                         <button className="discord-btn" onClick={() => window.location.href = "https://discord.com/oauth2/authorize?client_id=1281312944994517054"}>
                             <img src="./images/discord.png" className="discord-img" />
                         </button>
-                        <button className="web-btn">
+                        <button className="web-btn" onClick={usewebHandle}>
                             <img src="./images/web_ill.png" className="web-img" />
                             <p className="web-text">WEB</p>
                         </button>

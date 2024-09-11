@@ -2,21 +2,41 @@
     font-family: "Poppins", sans-serif;
     font-style: normal;
     padding-top: 50px;
-    background-color: #40513B;
     padding-bottom: 20px;
 }
 
-.footer-content {
+.footer-main {
+    background-color: #40513B;
     color: #609966;
 }
 
+.footer-main .git-link, .footer-main .help-link {
+    color: #97bd9b;
+}
+
+.howtouse-footer {
+    background-color: white;
+}
+
+.issue-footer {
+    background-color: white;
+}
+
+.polyglot-footer {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    padding-top: 50px;
+    background-color: #fff !important;
+    padding-bottom: 20px;
+}
+
 .git-img {
-    width: 46px;
+    width: 32px;
     height: auto;
 }
 
 .help-img {
-    width: 50px;
+    width: 36px;
     height: auto;
 }
 
@@ -38,8 +58,8 @@
     margin-right: 12px;
 }
 
-.git-link, .help-link {
-    color: #97bd9b;
+.git-link,
+.help-link {
     display: flex;
     align-items: center;
     text-decoration: none;

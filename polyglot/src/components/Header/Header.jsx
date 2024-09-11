@@ -17,7 +17,7 @@ const Header = () => {
                 </div>
 
                 <div className="nav-right">
-                <a href="https://discord.com/">Discord</a>
+                <a href="https://discord.com/oauth2/authorize?client_id=1281312944994517054">Discord</a>
                 <button className="lang-button">
                     <img src="/images/lang.png" className="langicon" />Language
                 </button>
