@@ -26,13 +26,14 @@ i18n
         },
       },
     },
+    lng: "한국어",
     fallbackLng: '한국어',
     debug: true,
     interpolation: {
       escapeValue: false,
     },
     detection: {
-      order: ['localStorage', 'cookie', 'navigator', 'htmlTag', 'path', 'subdomain'],  // 언어를 감지하는 순서
+      order: ['localStorage', 'cookie', 'navigator', 'htmlTag', 'path', 'subdomain'],
       caches: ['localStorage', 'cookie'],  
     },
   });
