@@ -2,6 +2,7 @@ import React from "react";
 import "./Section.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 const Section = () => {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ const Section = () => {
             </div>
             
             <div className="third-text">
-                <div className="ttext">
+                <div className='ttext'>
                     <h1>{t('conquerTheWorld')}</h1>
                     세계 제 1 외국어인 영어부터 시작해서 <br/>
                     아시아, 유럽, 아프리카 등 소통 안되는 나라가 없도록 <br/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import { useTranslation } from 'react-i18next';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main';
@@ -10,6 +11,8 @@ import Issue from './pages/Issue/Pathnote';
 import Useweb from './pages/Useweb/Useweb';
 
 function App() {
+  const {t} = useTranslation();
+  
   return (
     <Router>
       <div className="App">
