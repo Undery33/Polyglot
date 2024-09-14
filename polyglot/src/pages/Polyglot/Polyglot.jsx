@@ -1,7 +1,9 @@
 import React from "react";
 import './Polyglot.css'
-
+import { useTranslation } from "react-i18next";
 const Polyglot = () => {
+    const {t} = useTranslation();
+    
     return (
         <>
             <div className="main-info">

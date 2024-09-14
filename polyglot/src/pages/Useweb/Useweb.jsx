@@ -4,14 +4,15 @@ import './Useweb.css'
 const Useweb = () => {
     return (
         <>
-            <div className="first-div">
-                영어, 한국어부터 할 것 <br/>
-                <input type="">
-
-                </input>
-                <input type="">
-                    
-                </input>
+            <div className="main-div">
+                <div className="before-translate">
+                    <button className="bf-tr-btn">선택된 언어</button>
+                    <input></input>
+                </div>
+                <div className="after-translate">
+                    <button className="aft-tr-btn">선택된 언어</button>
+                    <input></input>
+                </div>
             </div>
         </>
     )

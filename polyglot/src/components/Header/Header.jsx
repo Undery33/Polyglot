@@ -46,6 +46,7 @@ const Header = () => {
                   onClick={() => handleSelectLanguage('English')}
                   className={i18n.language === 'English' ? 'selected' : ''}
                 >
+                  <img src="./images/us_flag.png" className="flag-img"/>
                   English
                   <span className="checkmark">✔️</span>
                 </li>
@@ -53,6 +54,7 @@ const Header = () => {
                   onClick={() => handleSelectLanguage('한국어')}
                   className={i18n.language === '한국어' ? 'selected' : ''}
                 >
+                  <img src="./images/kr_flag.png" className="flag-img"/>
                   한국어
                   <span className="checkmark">✔️</span>
                 </li>
@@ -60,6 +62,7 @@ const Header = () => {
                   onClick={() => handleSelectLanguage('日本語')}
                   className={i18n.language === '日本語' ? 'selected' : ''}
                 >
+                  <img src="./images/jp_flag.png" className="flag-img"/>
                   日本語
                   <span className="checkmark">✔️</span>
                 </li>
