@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import './Header.css';
-import LanguageModal from '../LanguageModal/LanguageModal';
 import { Link } from "react-router-dom";
 import i18n from '../../i18n';
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+    const handlewebButton = () => {
+      navigate('/Useweb');
+    };
 
     const handleSelectLanguage = (language) => {
       i18n.changeLanguage(language);
@@ -35,8 +40,14 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Discord
+                <img src="/images/discord_logo.svg" className="discord-logo"/>
               </a>
+              <img
+                src="/images/new_web.png" 
+                className="header-web-img" 
+                onClick={handlewebButton}
+                style={{cursor: "pointer"}}
+              />
               <button className="lang-button" onClick={toggleDropdown}>
                 <img src="/images/lang.png" className="langicon" alt="Language Icon" /> Language
               </button>
