@@ -36,11 +36,18 @@ const Polyglot = () => {
             </div>
 
             <div className="third-info">
-                <img src="/images/third_info.svg" className="third-info-img" />
-                <h1>{t('features')}</h1> <br/>
+                <div className="third-cont">
+                    <img src="/images/third_info.svg" className="third-info-img" />
+                    <h1>{t('features')}</h1> <br/>
+                </div>
                 {t('featuresText1')}<br/>
                 {t('featuresText2')}<br/>
-                (표 들어가야될 곳)
+                <div className="info-cont">
+                <div className="info left-align"><img src="/images/discord_3D.png" className="discord-3d-img" /></div>
+                <div className="info right-align"><img src="/images/chat_3D.png" className="chat-3d-img" /></div>
+                <div className="info left-align"><img src="/images/talk_3D.png" className="talk-3d-img" /></div>
+                <div className="info right-align"><img src="/images/feedback_3D.png" className="feedback-3d-img" /></div>
+                </div>
             </div>
         </>
     )
