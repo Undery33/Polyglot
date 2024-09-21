@@ -24,11 +24,15 @@
 
 .polyglot-footer .git-link, .polyglot-footer .help-link {
     color: #E1AFD1;
-
 }
 
 .howtouse-footer {
     background-color: #112D4E;
+    color: #627598;
+}
+
+.howtouse-footer .git-link, .howtouse-footer .help-link {
+    color: #b4c3e0;
 }
 
 /**/

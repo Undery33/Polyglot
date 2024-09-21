@@ -1,14 +1,52 @@
 .main-info {
-    padding: 100px;
+    padding-top: 24vh;
+    padding-bottom: 16vh;
     background-color: #FFE6E6;
+    color: #36154d;
 }
 
 .sec-info {
-    padding: 100px;
+    padding: 20vh;
     background-color: #E1AFD1;
+    color: #5d0e44;
 }
 
 .third-info {
-    padding: 100px;
+    padding: 20vh;
     background-color: #AD88C6;
+    color: #210436;
+}
+
+.main-info-img {
+    width: 18rem;
+    height: auto;
+}
+
+.main-info h1 {
+    color: #6e3d8f;
+    font-size: 30px;
+}
+
+.sec-info-img {
+    width: 18rem;
+    height: auto;
+}
+
+.sec-info h1 {
+    color: #a3337f;
+    font-size: 32px;
+}
+
+.third-info h1 {
+    color: #4c2268;
+    font-size: 44px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.third-info-img {
+    vertical-align: middle;
+    width: 4rem;
+    height: auto;
+    margin: 20px;
 }

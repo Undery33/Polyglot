@@ -15,10 +15,12 @@ const Command = () => {
     return (
         <>
             <div className="cmd-info">
+                <img src="/images/command.svg" className="cmd-info-img" />
                 <h1>{t('commands')}</h1>
                 {t('cmd_text1')}<br/>
                 {t('cmd_text2')}<br/>
                 <button className="issue-btn" onClick={how2useButton}>
+                    <img src="/images/help_icon.svg" className="help-img" />
                     {t('support')}
                 </button>
             </div>

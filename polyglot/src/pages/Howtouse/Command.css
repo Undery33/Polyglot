@@ -1,9 +1,45 @@
 .cmd-info{
-    padding: 100px;
+    padding-top: 16vh;
+    padding-bottom: 6vh;
     background-color: #DBE2EF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #042956;
+}
+
+.cmd-info h1 {
+    color: #194984;
 }
 
 .cmd {
-    padding: 100px;
+    padding: 16vh;
     background-color: #3F72AF;
 }
+
+.cmd-info-img {
+    width: 5rem;
+    height: auto;
+}
+
+.issue-btn {
+    font-size: 22px;
+    margin-top: 2rem;
+    background-color: #3F72AF;
+    color: #DBE2EF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .help-img {
+    width: 2.5rem;
+    margin-left: -4px;
+    margin-right: 10px;
+  }
+  

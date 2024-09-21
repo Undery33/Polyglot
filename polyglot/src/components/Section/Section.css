@@ -13,7 +13,7 @@
 .first-text {
     white-space: nowrap;
     color: #40513B;
-    padding: 10rem 0 7.5rem 0;
+    padding: 16rem 0 11rem 0;
     background-color: var(--section-background-color);
     align-items: center;
     display: flex;
@@ -33,7 +33,7 @@
 .second-text {
     color: #40513B;
     margin-top: -1.5rem;
-    padding: 10rem 0 12.5rem 0;
+    padding: 14rem 0 14rem 0;
     background-color: #9DC08B;
     align-items: center;
     display: flex;
@@ -44,7 +44,7 @@
 .third-text {
     color: #2d392a;
     margin-top: -1.5rem;
-    padding: 10rem 0 10rem 0;
+    padding: 14rem 0 14rem 0;
     background-color: #609966;
     display: flex;
     justify-content: center;
@@ -103,7 +103,7 @@
 }
 
 .web-img {
-    padding-left: 1.5rem;
+    padding-left: 0.5rem;
     width: 2.25rem;
     height: auto;
 }

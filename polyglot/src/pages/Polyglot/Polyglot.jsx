@@ -8,6 +8,7 @@ const Polyglot = () => {
     return (
         <>
             <div className="main-info">
+                <img src="/images/question.svg" className="main-info-img"/>
                 <h1>WHAT IS POLYGLOT</h1>
                 {t('whatispolyglot').split('\n').map((line, index) => (
                         <span key={index}>
@@ -22,6 +23,7 @@ const Polyglot = () => {
             </div>
 
             <div className="sec-info">
+                <img src="/images/talk_make.svg" className="sec-info-img" />
                 <h1>WHY MAKE THIS</h1>
                 {t('whymakethis').split('\n').map((line, index) => (
                         <span key={index}>
@@ -34,7 +36,8 @@ const Polyglot = () => {
             </div>
 
             <div className="third-info">
-                <h1>{t('features')}</h1>
+                <img src="/images/third_info.svg" className="third-info-img" />
+                <h1>{t('features')}</h1> <br/>
                 {t('featuresText1')}<br/>
                 {t('featuresText2')}<br/>
                 (표 들어가야될 곳)
