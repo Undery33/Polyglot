@@ -36,6 +36,15 @@ i18n
           features: "기능 소개",
           featuresText1: "PolyGlot이 제공하는 여러 기능들이에요!",
           featuresText2: "이러한 장점이 여러분의 바램들을 보완해줄 거에요",
+          // Polyglot - Info-div
+          infodiv_1: "전 세계 사람들이 이용하는 디스코드로",
+          infodiv_text1: "디스코드 봇을 이용하여 억 단위의 사람들과 만나는 기회를 가져보세요!",
+          infodiv_2: "채팅으로 오가는 여러 국가의 언어들",
+          infodiv_text2: "슬래시(/)를 이용하여 본인의 국가를 설정하고, \n대화를 자유롭게 즐겨보세요!",
+          infodiv_3: "목소리 듣고 싶으셨죠, 실시간 대화 번역",
+          infodiv_text3: "말한 뒤 2초간 정적이 흐르면 TTS로 봇이 대신 말해줄거에요!",
+          infodiv_4: "무엇이 안되나요? 고쳐드릴게요!",
+          infodiv_text4: "사용하다 오류가 발생하였나요? 저에게 알려주세요! 고쳐드릴게요!",
           // Howtouse - Command Info
           support: "지원",
           commands: "명령어 소개",
@@ -76,6 +85,15 @@ i18n
           features: "Features",
           featuresText1: "These are the various features that PolyGlot offers!",
           featuresText2: "These advantages will complement your desires.",
+          // Polyglot - Info-div
+          infodiv_1: "Connect with people all over the world using Discord",
+          infodiv_text1: "Take the opportunity to meet millions of people through Discord bots!",
+          infodiv_2: "Multiple languages exchanged through chat",
+          infodiv_text2: "Use the slash (/) to set your country and enjoy conversations freely!",
+          infodiv_3: "Want to hear voices? Real-time conversation translation",
+          infodiv_text3: "After speaking, if there’s 2 seconds of silence, \nthe bot will use TTS to speak for you!",
+          infodiv_4: "Something not working? I'll fix it!",
+          infodiv_text4: "Encountered an error while using it? Let me know! I’ll fix it for you!",
           // Howtouse - Command Info
           support: "Support",
           commands: "Command Introduction",
@@ -117,6 +135,15 @@ i18n
           features: "機能紹介",
           featuresText1: "PolyGlotが提供するさまざまな機能です！",
           featuresText2: "これらの利点があなたの希望を補ってくれますよ。",
+          // Polyglot - Info-div
+          infodiv_1: "世界中の人々とつながる\nディスコード",
+          infodiv_text1: "ディスコードボットを使って、数百万人の人々と出会うチャンスを手に入れましょう！",
+          infodiv_2: "チャットで交わされる多言語",
+          infodiv_text2: "スラッシュ（/）を使用して自国を設定し、\n自由に会話を楽しんでください！",
+          infodiv_3: "声が聞きたいですか？\nリアルタイム会話翻訳",
+          infodiv_text3: "話した後、2秒間の静寂があれば、\nボットがTTSであなたに代わって話します！",
+          infodiv_4: "何かうまくいかないことがありましたか？直してあげます！",
+          infodiv_text4: "使用中にエラーが発生しましたか？私に教えてください！\n直してあげます！",
           // Howtouse - Command Info
           support: "サポート",
           commands: "コマンド紹介",
