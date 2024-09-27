@@ -1,15 +1,27 @@
+.first-div h1 {
+    margin-top: -1.5rem;
+}
+
 .first-div {
-    padding: 100px;
+    padding: 10rem;
     background-color: #EEEEEE;
 }
 
+.path-div h1 {
+    margin-top: -6.7rem;
+}
+
 .path-div {
-    padding: 100px;
+    padding: 10rem;
     background-color: #FFD369;
 }
 
+.help-div h1 {
+    margin-top: -11rem;
+}
+
 .help-div {
-    padding: 100px;
+    padding: 15rem;
     background-color: #393E46;
     color: #EEEEEE;
 }
