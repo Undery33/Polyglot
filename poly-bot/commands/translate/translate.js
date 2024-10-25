@@ -1,3 +1,8 @@
+/*
+    해당 파일은 번역이 가능한지에 대한 확인 커멘드와 유저 정보를 DynamoDB에서 가져올 수 있는지에 대한
+    확인 파일 입니다.
+*/
+
 const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const { DynamoDBClient, GetItemCommand } = require('@aws-sdk/client-dynamodb');
 const { TranslateClient, TranslateTextCommand } = require('@aws-sdk/client-translate');

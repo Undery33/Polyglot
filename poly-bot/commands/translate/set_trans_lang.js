@@ -1,3 +1,11 @@
+/*
+    해당 파일은 번역할 언어를 세팅하는 파일입니다.
+    
+    말할 언어와 번역할 언어를 세팅하여 번역해주도록 하였습니다.
+
+    현재까지는 한국어, 영어, 일본어만 가능케 하였습니다.
+*/
+
 const { SlashCommandBuilder } = require('discord.js');
 const { DynamoDBClient, UpdateItemCommand } = require('@aws-sdk/client-dynamodb');
 const fs = require('fs');

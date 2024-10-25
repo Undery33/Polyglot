@@ -1,9 +1,15 @@
+/*
+    해당 파일의 목적은 <실시간 번역 스위치> 입니다.
+    /in_real_time_translate 커멘드를 입력할 시, 실시간 번역 활동에 대해 선택 버튼이 나오고
+    yes 누를 시 채팅할 때마다 번역을 수행해줍니다.
+    no를 누를 시에는 번역 수행을 그만둡니다.
+*/
+
 const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const { DynamoDBClient, UpdateItemCommand } = require('@aws-sdk/client-dynamodb');
 const fs = require('fs');
 const path = require('path');
 
-// Load AWS configuration from config.json
 let configPath;
 if (fs.existsSync(path.resolve(__dirname, '../../config.json'))) {
     configPath = path.resolve(__dirname, '../../config.json');
@@ -13,6 +19,7 @@ if (fs.existsSync(path.resolve(__dirname, '../../config.json'))) {
     throw new Error('Configuration file not found in expected paths.');
 }
 
+// config.json과 AWS DynamoDB 내 설정된 data를 호출 및 저장
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const dynamodbClient = new DynamoDBClient({
     region: config.region,
@@ -23,24 +30,25 @@ const dynamodbClient = new DynamoDBClient({
 });
 
 module.exports = {
+    // 커멘드 설정
     data: new SlashCommandBuilder()
         .setName('in_real_time_translate')
         .setDescription('실시간 번역을 사용하시겠습니까?'),
     async execute(interaction) {
-        const irtTranYes = new ButtonBuilder()
+        const irtTranYes = new ButtonBuilder()  // 예
             .setCustomId('irt_yes')
             .setLabel('YES')
             .setStyle(ButtonStyle.Success);
 
-        const irtTranNo = new ButtonBuilder()
+        const irtTranNo = new ButtonBuilder()   // 아니오
             .setCustomId('irt_no')
             .setLabel('NO')
             .setStyle(ButtonStyle.Danger);
 
-        const row = new ActionRowBuilder()
+        const row = new ActionRowBuilder()  // 버튼
             .addComponents(irtTranYes, irtTranNo);
 
-        await interaction.reply({
+        await interaction.reply({   // 채팅으로 확인
             content: '실시간 번역을 활성화 하시겠습니까?',
             components: [row],
         });
@@ -48,7 +56,7 @@ module.exports = {
         const filter = (i) => (i.customId === 'irt_yes' || i.customId === 'irt_no') && i.user.id === interaction.user.id;
         const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
-        collector.on('collect', async (i) => {
+        collector.on('collect', async (i) => {  // 번역 시작 및 중지 채팅
             let chooseIrtTrans;
             if (i.customId === 'irt_yes') {
                 chooseIrtTrans = true;
@@ -58,7 +66,7 @@ module.exports = {
                 await i.update({ content: '실시간 번역을 중지할게요..', components: [] });
             }
 
-            // Update user language preferences in DynamoDB using AWS SDK v3
+            // AWS SDK v3 설정
             const params = {
                 TableName: 'PG_Users',
                 Key: {

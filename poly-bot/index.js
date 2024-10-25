@@ -82,6 +82,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+// 실시간 채팅 번역 코드
+// choose_irt_trans.js 에서 Yes를 눌렀을 시 실행됨
 client.on('messageCreate', async message => {
     // 봇이 보낸 메시지나 번역된 메시지는 무시
     if (message.author.bot || message.content.startsWith('[Translated]')) return;

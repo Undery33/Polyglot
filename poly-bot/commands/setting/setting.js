@@ -22,7 +22,7 @@ const dynamodbClient = new DynamoDBClient({
 });
 
 const data = new SlashCommandBuilder()
-    .setName('Text_Channel_Setting')
+    .setName('tc_setting')
     .setDescription('채팅을 한정된 공간에서만 사용하세요!')
     .addStringOption(option =>
         option.setName('chatting_space')

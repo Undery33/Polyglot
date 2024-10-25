@@ -1,3 +1,11 @@
+/*
+    해당 파일은 사용자의 언어를 파악하여 해당 언어로 보여주는 기능입니다.
+
+    아직 확실치 않은 기능이니, 더욱이 개발해야할 파일 입니다.
+
+    만약 한국어를 누를 시 한국어로만 명령어를 입력할 수 있도록 할 것입니다.
+*/
+
 const { SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const { DynamoDBClient, PutItemCommand } = require('@aws-sdk/client-dynamodb');
 const fs = require('fs');
