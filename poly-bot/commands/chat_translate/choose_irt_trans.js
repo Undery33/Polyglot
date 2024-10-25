@@ -32,8 +32,8 @@ const dynamodbClient = new DynamoDBClient({
 module.exports = {
     // 커멘드 설정
     data: new SlashCommandBuilder()
-        .setName('in_real_time_translate')
-        .setDescription('실시간 번역을 사용하시겠습니까?'),
+        .setName('(F)IRT_Translate')
+        .setDescription('Do you want to use real-time translation?'),
     async execute(interaction) {
         const irtTranYes = new ButtonBuilder()  // 예
             .setCustomId('irt_yes')
@@ -49,7 +49,7 @@ module.exports = {
             .addComponents(irtTranYes, irtTranNo);
 
         await interaction.reply({   // 채팅으로 확인
-            content: '실시간 번역을 활성화 하시겠습니까?',
+            content: 'Do you want to use real-time translation?',
             components: [row],
         });
 
@@ -60,10 +60,10 @@ module.exports = {
             let chooseIrtTrans;
             if (i.customId === 'irt_yes') {
                 chooseIrtTrans = true;
-                await i.update({ content: '실시간 번역을 시작할게요!', components: [] });
+                await i.update({ content: 'Lets start the real-time translation!', components: [] });
             } else if (i.customId === 'irt_no') {
                 chooseIrtTrans = false;
-                await i.update({ content: '실시간 번역을 중지할게요..', components: [] });
+                await i.update({ content: 'Ill stop the real-time translation..', components: [] });
             }
 
             // AWS SDK v3 설정

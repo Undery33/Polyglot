@@ -92,7 +92,7 @@ client.on('messageCreate', async message => {
     const userId = message.author.id;
 
     // DynamoDB에서 유저 데이터 가져오기
-    const params = {
+    const userParams = {
         TableName: 'PG_Users', // 테이블 이름을 명시적으로 설정
         Key: {
             userID: { S: userId }, // 키는 userID로 설정되어 있다고 가정
@@ -100,13 +100,37 @@ client.on('messageCreate', async message => {
     };
 
     try {
-        const command = new GetItemCommand(params);
-        const data = await dynamodbClient.send(command);
+        // PG_server 테이블에서 채널 정보를 가져오기
+        const serverParams = {
+            TableName: 'PG_server',
+            Key: {
+                serverID: { S: message.guild.id }, // serverID를 기준으로 조회
+            },
+        };
 
-        if (data.Item) {
-            const translateData = data.Item.irt_translate ? data.Item.irt_translate.BOOL : false;
-            let sourceLang = data.Item.sourceLanguage ? data.Item.sourceLanguage.S : 'en';
-            let targetLang = data.Item.targetLanguage ? data.Item.targetLanguage.S : 'es';
+        const serverCommand = new GetItemCommand(serverParams);
+        const serverData = await dynamodbClient.send(serverCommand);
+
+        if (serverData.Item) {
+            const chattingID = serverData.Item.chattingID ? serverData.Item.chattingID.S : null;
+            
+            // 현재 메시지가 전송된 채널이 지정된 채널인지 확인
+            if (message.channel.id !== chattingID) {
+                console.log('이 채널에서는 봇이 작동하지 않도록 설정되어 있습니다.');
+                return;
+            }
+        } else {
+            console.error('PG_server 테이블에서 서버 데이터를 찾을 수 없습니다.');
+            return;
+        }
+
+        const userCommand = new GetItemCommand(userParams);
+        const userData = await dynamodbClient.send(userCommand);
+
+        if (userData.Item) {
+            const translateData = userData.Item.irt_translate ? userData.Item.irt_translate.BOOL : false;
+            let sourceLang = userData.Item.sourceLanguage ? userData.Item.sourceLanguage.S : 'en';
+            let targetLang = userData.Item.targetLanguage ? userData.Item.targetLanguage.S : 'es';
 
             // 언어 이름을 코드로 변환
             const languageMap = {
@@ -162,5 +186,6 @@ client.on('messageCreate', async message => {
         console.error('데이터를 가져오는 도중 오류가 발생했어요. 오류 메시지: ' + error.message);
     }
 });
+
 
 client.login(token);
