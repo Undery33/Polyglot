@@ -22,48 +22,31 @@ const dynamodbClient = new DynamoDBClient({
 });
 
 const data = new SlashCommandBuilder()
-    .setName('set_language_preference')
-    .setDescription('Set your language preference for translations!')
+    .setName('Text_Channel_Setting')
+    .setDescription('채팅을 한정된 공간에서만 사용하세요!')
     .addStringOption(option =>
-        option.setName('source_language')
-            .setDescription('The language of the input text (e.g., English, Korean)')
+        option.setName('chatting_space')
+            .setDescription('이 외의 공간에서는 채팅이 불가합니다.')
             .setRequired(true))
-    .addStringOption(option =>
-        option.setName('target_language')
-            .setDescription('The language you want to translate to (e.g., English, Korean)')
-            .setRequired(true));
 
 module.exports = {
     data,
     async execute(interaction) {
-        const sourceLanguage = interaction.options.getString('source_language');
-        const targetLanguage = interaction.options.getString('target_language');
-
-        // Validate language inputs
-        const validLanguages = ['English', 'Korean', 'Japanese'];
-        if (!validLanguages.includes(sourceLanguage) || !validLanguages.includes(targetLanguage)) {
-            await interaction.reply('Invalid language input. Please specify either "English" or "Korean" for both source and target languages.');
-            return;
-        }
 
         // Update user language preferences in DynamoDB using AWS SDK v3
         const params = {
-            TableName: 'PG_Users',
+            TableName: 'PG_server',
             Key: {
                 userID: { S: interaction.user.id },
             },
-            UpdateExpression: 'SET sourceLanguage = :sourceLang, targetLanguage = :targetLang',
+            UpdateExpression: 'SET chattingID = :chatId',
             ExpressionAttributeValues: {
-                ':sourceLang': { S: sourceLanguage },
-                ':targetLang': { S: targetLanguage },
+                ':chatId': { S: sourceLanguage }
             },
         };
 
         try {
             await dynamodbClient.send(new UpdateItemCommand(params));
-            console.log(`Language preference for user ${interaction.user.id} updated successfully.`);
-            await interaction.reply(`번역 세팅이 업데이트 되었어요! 
-${sourceLanguage} 에서 ${targetLanguage} 로 번역해드릴게요!`);
         } catch (error) {
             console.error('Error updating language preference:', error);
             await interaction.reply('There was an error updating your language preference. Please try again later.');
