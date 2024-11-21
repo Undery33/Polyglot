@@ -32,7 +32,7 @@ const dynamodbClient = new DynamoDBClient({
 module.exports = {
     // 커멘드 설정
     data: new SlashCommandBuilder()
-        .setName('(F)IRT_Translate')
+        .setName('irt_translate')
         .setDescription('Do you want to use real-time translation?'),
     async execute(interaction) {
         const irtTranYes = new ButtonBuilder()  // 예
