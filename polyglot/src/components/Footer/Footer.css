@@ -1,0 +1,98 @@
+/* 전체 Footer 스타일 */
+.site-footer {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* 메인 페이지 Footer 색*/
+.footer-main {
+    background-color: #40513B;
+    color: #609966;
+}
+
+.footer-main .git-link, .footer-main .help-link {
+    color: #97bd9b;
+}
+
+/* /Polyglot Footer 색 */
+.polyglot-footer {
+    background-color: #7469b6;
+    color: #AD88C6;
+}
+
+.polyglot-footer .git-link, .polyglot-footer .help-link {
+    color: #E1AFD1;
+}
+
+.howtouse-footer {
+    background-color: #112D4E;
+    color: #627598;
+}
+
+.howtouse-footer .git-link, .howtouse-footer .help-link {
+    color: #b4c3e0;
+}
+
+/**/
+.issue-footer {
+    background-color: #222831;
+    color: #929292;
+}
+
+.issue-footer .git-link, .issue-footer .help-link {
+    color: #EEEEEE;
+}
+
+.useweb-footer {
+    background-color: #B1B2FF;
+    color: #676897;
+}
+
+.useweb-footer .git-link, .useweb-footer .help-link {
+    color: #4d4e71;
+}
+
+/**/
+.polyglot-footer {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.git-img {
+    width: 32px;
+    height: auto;
+}
+
+.help-img {
+    width: 36px;
+    height: auto;
+}
+
+.dev-text,
+.help-text {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    gap: 40px;
+}
+
+.footer-links img {
+    margin-right: 12px;
+}
+
+.git-link,
+.help-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

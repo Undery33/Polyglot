@@ -1,0 +1,120 @@
+.main-info {
+    padding-top: 24vh;
+    padding-bottom: 16vh;
+    background-color: #FFE6E6;
+    color: #36154d;
+}
+
+.sec-info {
+    padding: 20vh;
+    background-color: #E1AFD1;
+    color: #5d0e44;
+}
+
+.third-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    background-color: #AD88C6;
+    color: #210436;
+    text-align: center;
+}
+
+.main-info-img {
+    width: 18rem;
+    height: auto;
+}
+
+.main-info h1 {
+    color: #6e3d8f;
+    font-size: 30px;
+}
+
+.sec-info-img {
+    width: 18rem;
+    height: auto;
+}
+
+.sec-info h1 {
+    color: #a3337f;
+    font-size: 32px;
+}
+
+.third-info h1 {
+    color: #4c2268;
+    font-size: 44px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.third-info-img {
+    vertical-align: middle;
+    width: 4rem;
+    height: auto;
+    margin: 20px;
+}
+
+.third-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-cont {
+    padding-top: 2rem;
+}
+
+.info {
+    width: 55rem;
+    height: 11rem;
+    background-color: #e4d4ee;
+    border-radius: 32px;
+    padding: 20px;
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 이미지와 텍스트를 좌우로 배치 */
+    overflow: hidden;
+}
+
+.text-container {
+    color: #4c2268;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem;
+    margin-top: -20px;
+}
+
+.discord-3d-img {
+    width: 22rem;
+    height: auto;
+    padding-top: 4vh;
+}
+
+.chat-3d-img {
+    width: 22rem;
+    height: auto;
+}
+
+.talk-3d-img {
+    width: 18rem;
+    height: auto;
+    padding-left: 3rem;
+}
+
+.feedback-3d-img {
+    padding-right: 2rem;
+    width: 17rem;
+    height: auto;
+}
+
+.info-cont h1 {
+    color: #8648b0;
+    font-size: 26px;
+    margin-bottom: 10px; /* h1과 아래 텍스트 간격 조정 */
+}

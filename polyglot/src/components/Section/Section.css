@@ -1,22 +1,136 @@
-.discord img {
-    width: 50px;
-    height: 50px;
+:root {
+    --section-background-color: #EDF1D6;
+    --btn-margin: 1.25rem;
 }
 
-.discord {
-    width: 145px;
-    height: 55px;
-    background-color: white;
+.first-text,
+.second-text,
+.third-text {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.25rem;
+}
+
+.first-text {
+    white-space: nowrap;
+    color: #40513B;
+    padding: 16rem 0 11rem 0;
+    background-color: var(--section-background-color);
+    align-items: center;
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 10px;
-    padding: 0 10px;
+    gap: 2.5rem;
 }
 
-.discord .discord-text {
-    line-height: 55px;
-    font-size: 20px;
+.ftext-in {
+    font-size: 1.125rem;
 }
 
+.first-text .ftext {
+    max-width: 31.25rem;
+    flex: 1;
+}
+
+.second-text {
+    color: #40513B;
+    margin-top: -1.5rem;
+    padding: 14rem 0 14rem 0;
+    background-color: #9DC08B;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.third-text {
+    color: #2d392a;
+    margin-top: -1.5rem;
+    padding: 14rem 0 14rem 0;
+    background-color: #609966;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.first-img {
+    width: 25rem;
+    height: 25rem;
+}
+
+.second-img,
+.third-img {
+    width: 25rem;
+    height: auto;
+}
+
+.discord-btn {
+    width: 11rem;
+    height: 3.875rem;
+    background-color: #747eec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4.375rem;
+    margin-top: var(--btn-margin);
+    gap: 0.625rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+.discord-img {
+    width: 8.75rem;
+    height: auto;
+}
+
+.exp-btn {
+    margin-left: -0.625rem;
+    display: flex;
+}
+
+.web-btn {
+    background-color: #609966;
+    width: 11rem;
+    height: 3.875rem;
+    margin-left: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--btn-margin);
+    gap: 0.625rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+.web-img {
+    padding-left: 0.5rem;
+    width: 2.25rem;
+    height: auto;
+}
+
+.web-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding: 0 0.5rem;
+    font-size: 1.875rem;
+    color: #EDF1D6;
+}
+
+.ttext {
+    padding-top: 2.5rem;
+}
+
+@media (max-width: 1000px) {    
+    .first-text,
+    .second-text,
+    .third-text {
+        font-size: 1rem;
+    }
+    
+    .first-text,
+    .second-text,
+    .third-text::before {
+        content: " ";
+    }
+}

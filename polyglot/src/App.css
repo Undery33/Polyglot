@@ -3,15 +3,10 @@
   font-optical-sizing: auto;
   font-style: normal;
   text-align: center;
-  background-color: #282c34;
 }
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-a {
-  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
