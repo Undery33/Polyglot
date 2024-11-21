@@ -3,22 +3,17 @@ const path = require('node:path');
 const { Client, 
     GatewayIntentBits, 
     Events,
-    VoiceConnectionStatus, 
-    joinVoiceChannel, 
-    createAudioPlayer, 
-    NoSubscriberBehavior, 
-    createAudioResource, 
-    AudioPlayerStatus, 
     Collection } = require('discord.js');
+const { joinVoiceChannel, createAudioPlayer, createAudioResource, AudioPlayerStatus, VoiceReceiver } = require('@discordjs/voice');
 const { DynamoDBClient, GetItemCommand } = require('@aws-sdk/client-dynamodb');
 const { TranslateClient, TranslateTextCommand } = require('@aws-sdk/client-translate');
-const { TranscribeClient, StartTranscriptionJobCommand } = require('@aws-sdk/client-transcribe');
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { TranscribeStreamingClient, StartStreamTranscriptionCommand } = require('@aws-sdk/client-transcribe-streaming');
 const { token } = require('./config.json');
 const configPath = path.resolve(__dirname, './config.json');
-const { pipeline } = require('stream');
-const prism = require('prism-media');
-const VAD = require('node-vad');
+const { PassThrough } = require('stream');
+const ffmpegPath = require('ffmpeg-static');
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 
 let try_config;
 try {
@@ -32,7 +27,9 @@ const client = new Client({ intents: [
     GatewayIntentBits.Guilds, 
     GatewayIntentBits.GuildVoiceStates, 
     GatewayIntentBits.GuildMessages, 
-    GatewayIntentBits.MessageContent] });
+    GatewayIntentBits.MessageContent, 
+    GatewayIntentBits.GuildVoiceStates
+] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -55,15 +52,7 @@ const translateClient = new TranslateClient({
     },
 });
 
-const transcribeClient = new TranscribeClient({
-    region: config.region,
-    credentials: {
-        accessKeyId: config.accessKeyId,
-        secretAccessKey: config.secretAccessKey,
-    },
-});
-
-const s3Client = new S3Client({
+const transcribeClient = new TranscribeStreamingClient({
     region: config.region,
     credentials: {
         accessKeyId: config.accessKeyId,
@@ -215,111 +204,83 @@ client.on('messageCreate', async message => {
     }
 });
 
-client.on('interactionCreate', async (interaction) => {
-    if (!interaction.isChatInputCommand() || interaction.commandName !== 'join') return;
-  
-    const channel = interaction.member.voice.channel;
-    if (!channel) {
-        await interaction.reply('음성 채널에 접속한 상태여야 합니다.');
-        return;
-    }
-  
-    // 봇이 음소거 상태인지 확인하고 해제
-    const botMember = channel.guild.me;
-    if (botMember.voice.selfMute) {
-        botMember.voice.setMute(false);
-        console.log('봇의 음소거 상태를 해제했습니다.');
-    }
-  
-    await interaction.reply('음성 채널에 접속했습니다. 3초간 말이 없으면 음성을 저장합니다.');
-  
-    const audioStream = receiver.subscribe(interaction.member.id, {
-        end: {
-            behavior: 'manual',
-        },
-    });
-  
-    const opusStream = new prism.opus.Decoder({
-        rate: 16000,  // 샘플 레이트를 16kHz로 변경
-        channels: 1,
-        frameSize: 960,
-    });
-  
-    const filePath = path.join(__dirname, `audio-${Date.now()}.pcm`);
-    const writeStream = fs.createWriteStream(filePath);
-  
-    // VAD 사용 설정 (모드를 VERY_AGGRESSIVE에서 AGGRESSIVE로 변경)
-    const vad = VAD.createVAD(VAD.Mode.AGGRESSIVE);
-    let silenceStartTime = null;
-    let silenceTimeout = null;
-  
-    opusStream.on('data', async (chunk) => {
-        const res = await vad.processAudio(chunk, 16000);  // 샘플 레이트 일치
-        if (res === VAD.Event.SILENCE) {
-            if (silenceStartTime === null) {
-                silenceStartTime = Date.now();
-            }
+// 음성 채널에 참여하고 유저의 음성을 인식하는 코드 추가
+client.on('voiceStateUpdate', async (oldState, newState) => {
+    // 봇이 음성 채널에 새로 참여했는지 확인
+    if (!oldState.channel && newState.channel && newState.member.user.id === client.user.id) {
+        console.log(`봇이 음성 채널에 참여했습니다: ${newState.channel.name}`);
 
-            // 3초간 침묵이 지속되면 파일 저장
-            if (Date.now() - silenceStartTime >= 3000) {
-                if (silenceTimeout === null) {
-                    silenceTimeout = setTimeout(() => {
-                        console.log('3초간 침묵이 감지됨. 파일을 저장합니다.');
-                        writeStream.end(); // 파일 저장 스트림 종료
-                    }, 3000);
-                }
-            }
-        } else {
-            if (silenceStartTime === null) {
-                console.log('유저의 음성이 감지되었습니다. 녹음을 시작합니다.');
-            }
-            silenceStartTime = null;
-            if (silenceTimeout) {
-                clearTimeout(silenceTimeout);
-                silenceTimeout = null;
-            }
-            writeStream.write(chunk);
-        }
-    });
-  
-    writeStream.on('finish', () => {
-        console.log('파일이 성공적으로 저장되었습니다.');
-  
-        // S3에 파일 업로드
-        const uploadParams = {
-            Bucket: 'pg-discord-voice',
-            Key: `read-users-voice/audio-${Date.now()}.pcm`,
-            Body: fs.createReadStream(filePath),
-        };
-  
-        s3Client.send(new PutObjectCommand(uploadParams)).then((data) => {
-            console.log('파일이 S3에 성공적으로 업로드되었습니다.');
-        }).catch((err) => {
-            console.error('S3 업로드 에러:', err);
+        const connection = joinVoiceChannel({
+            channelId: newState.channel.id,
+            guildId: newState.guild.id,
+            adapterCreator: newState.guild.voiceAdapterCreator,
         });
-    });
 
-    // 스트림에서 오류가 발생했을 때 처리
-    audioStream.on('error', (err) => {
-        console.error('오디오 스트림 에러:', err);
-    });
+        const receiver = connection.receiver;
 
-    opusStream.on('error', (err) => {
-        console.error('Opus 스트림 에러:', err);
-    });
-
-    writeStream.on('error', (err) => {
-        console.error('파일 쓰기 스트림 에러:', err);
-    });
-
-    // 음성 채널에 있는지 확인하는 코드
-    setInterval(() => {
-        if (!interaction.member.voice.channel) {
-            console.log('유저가 음성 채널에서 나갔습니다.');
-            audioStream.destroy();
-            writeStream.end();
+        if (!(receiver instanceof VoiceReceiver)) {
+            console.error('수신기(receiver)가 유효하지 않습니다. VoiceReceiver 인스턴스가 아닙니다.');
+            return;
         }
-    }, 5000);
+
+        receiver.speaking.on('start', async userId => {
+            console.log(`유저 ${userId}가 말하기 시작했습니다.`);
+            
+            try {
+                const opusStream = receiver.subscribe(userId, { end: false });
+                const audioStream = new PassThrough();
+
+                // ffmpeg를 사용하여 오디오를 PCM으로 변환
+                ffmpeg(opusStream)
+                    .inputFormat('ogg') // Discord.js의 Opus 스트림은 ogg 형식을 사용함
+                    .audioFrequency(16000)
+                    .audioChannels(1)
+                    .format('s16le')
+                    .on('error', (err) => {
+                        console.error('FFmpeg 오류: ', err.message);
+                    })
+                    .pipe(audioStream, { end: false });
+
+                const command = new StartStreamTranscriptionCommand({
+                    LanguageCode: 'en-US',
+                    MediaSampleRateHertz: 16000,
+                    MediaEncoding: 'pcm',
+                    AudioStream: audioStream,
+                });
+
+                console.log('Transcription 시작 요청 중...');
+                try {
+                    const response = await transcribeClient.send(command);
+                    console.log('Transcription 요청 성공, 결과 수신 대기 중...');
+                    for await (const event of response.TranscriptResultStream) {
+                        console.log('Transcription 이벤트 수신:', event);
+                        if (event.TranscriptEvent) {
+                            const results = event.TranscriptEvent.Transcript.Results;
+                            for (const result of results) {
+                                if (!result.IsPartial) {
+                                    const transcript = result.Alternatives[0].Transcript;
+                                    console.log(`Transcription: ${transcript}`);
+                                }
+                            }
+                        }
+                    }
+                } catch (transcribeError) {
+                    if (transcribeError.name === 'BadRequestException' && transcribeError.message.includes('no new audio was received')) {
+                        console.warn('Transcription 타임아웃: 음성이 15초 이상 수신되지 않았습니다.');
+                        console.log('Transcription 타임아웃으로 인한 종료');
+                    } else {
+                        console.error('Transcribe 요청 오류: ', transcribeError);
+                    }
+                }
+            } catch (error) {
+                console.error('Transcribe 요청 오류: ', error);
+            }
+        });
+
+        receiver.speaking.on('end', userId => {
+            console.log(`유저 ${userId}가 말하기를 끝냈습니다.`);
+        });
+    }
 });
 
 client.login(token);
